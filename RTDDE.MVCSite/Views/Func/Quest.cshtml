@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Quest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Script{
+    <link href="@Url.Content("~/Content/DataTables-1.10.2/css/jquery.dataTables.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/DataTables-1.10.2/jquery.dataTables.js")"></script>
+    <script>
+        $(document).ready(function () {
+            $('#nav-quest')
+
+            $('#questTable').DataTable({
+                ajax: {
+                    "url": "/api/Data/Quest",
+                    "dataSrc": ""
+                },
+                lengthChange: false,
+                searching:false,
+                columns: [
+                    { data: 'i' },
+                    { data: 'n' },
+                ]
+            });
+        });
+    </script>
+}
+<table id="questTable" class="display compact" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+</table>
